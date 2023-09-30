@@ -4,11 +4,16 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
-# Téléchargez et installez les bibliothèques CSFML
+# Téléchargez et installez la bibliothèque SFML
 cd $BUILD_DIR
+wget https://www.sfml-dev.org/files/SFML-2.2-linux-gcc-64-bit.tar.gz
+tar xvzf SFML-2.2-linux-gcc-64-bit.tar.gz
+export LD_LIBRARY_PATH=$BUILD_DIR/SFML-2.2-linux-gcc-64-bit.tar.gz:$LD_LIBRARY_PATH
+
+# Téléchargez et installez la bibliothèque CSFML
 wget https://www.sfml-dev.org/files/CSFML-2.2-linux-gcc-64-bit.tar.bz2
 tar xvzf CSFML-2.2-linux-gcc-64-bit.tar.bz2
 export LD_LIBRARY_PATH=$BUILD_DIR/CSFML-2.2-linux-gcc-64-bit.tar.bz2:$LD_LIBRARY_PATH
 
-# Créez un fichier de configuration pour indiquer que CSFML est installé
-echo "CSFML installed" > $BUILD_DIR/.csfml_installed
+# Créez un fichier de configuration pour indiquer que SFML et CSFML sont installés
+echo "SFML and CSFML installed" > $BUILD_DIR/.sfml_csfml_installed
